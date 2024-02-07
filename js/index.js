@@ -1,17 +1,46 @@
-import { getToDoData } from "./lib/firebase/api";
+import { getToDoData } from './lib/firebase/api';
+import { toDoItemTemplate } from './templates/toDoItem';
+/* 
+           1. Import Data 
+		   2. Working with Object of Objects 
+		      Object.values()
+			  Object.keys()
+			  Object.entries()
 
-//single source of truth from data
-let store = []
+		    3. Creating A Template Preline... Tailwind UI Libraries 
+
+			4. Creating A Render Function 
+
+			5 Updating the DOM.
+
+			Display Templating 
+			toDoItems.forEach((todo) => {
+		      document.querySelector('#root').insertAdjacentHTML('afterbegin', todo);
+	         });
+
+			  
+*/
 
 async function appInit() {
-    const toDos = await getToDoData()
-    console.log(toDos)
+	const appData = await getToDoData();
+	// Interactive Templating
+	const toDoItems = Object.values(appData).map((obj) => {
+		return toDoItemTemplate(obj.todo);
+	});
+
+	// render function jsx +++ data
+	// template fn() passing the data   =====> template string htmlish string
+
+	// interactive templating
+	// container
+	//batch update: do dom updates all at once
+
+	const div = document.createElement('div');
+	toDoItems.forEach((markup) => {
+		div.appendChild(markup);
+	});
+
+	document.querySelector('main').append(markup);
 }
 
-appInit()
-
-/*
-    RTDB returns object of objects
-    [objects] -> need to convert to an array
-    once object is collected, can build out a template
-*/
+appInit();

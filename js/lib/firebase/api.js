@@ -1,31 +1,29 @@
-//create script to connect app to firebase
+/* 
+                Read Data from RTDB 
 
-/*
-    read data from RTDB
+
 */
 
-import {ref, child, get} from "firebase/database";
+import { ref, get } from 'firebase/database';
+import { db } from './config/firebase/firebaseInit';
 
-import {db} from "./firebase/firebaseInit"
+/* 
+          1. connect to the to do list
+               reference  ref
+               const dbRef = ref(db, "/todos")
 
-/*
-// 1:connect to the to do list
-    refrence ref
-    const dbRef = ref(db, "/todos")
+          Asking for the data from that ref   path to a node in the JSON file...
+          get(ref)===> data snapshot
 
-// asking for the data from the ref -> path to a node in the JSON file
-    get(ref) -> returns data snapshot
-//extracting the data
-    extracting the data from the snapshot
-    snapshot.val()
+          extracting the data
+          snapshot.val()
+
 */
 
-
-
-async function getToDoData() { //becomes a promise
-    const dbRef = ref(db, "/todos")
-    const dataSnapshot = await get(dbRef); //get the data from the todos
-    return await dataSnapshot.val() //becomes the promise for the data to be retrieved?
+async function getToDoData() {
+	const dbRef = ref(db, '/todos');
+	const dataSnapshot = await get(dbRef);
+	return await dataSnapshot.val();
 }
 
-export {getToDoData};
+export { getToDoData };
