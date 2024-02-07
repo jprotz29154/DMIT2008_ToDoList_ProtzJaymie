@@ -6,7 +6,7 @@
 
 import {ref, child, get} from "firebase/database";
 
-import {db} from "./../../config/firebase/firebaseInit"
+import {db} from "./firebase/firebaseInit"
 
 /*
 // 1:connect to the to do list
