@@ -40,7 +40,7 @@ async function appInit() {
 		div.appendChild(markup);
 	});
 
-	document.querySelector('#root').append(div);
+	document.querySelector('main').append(div);
 }
 
 appInit();
