@@ -1,22 +1,18 @@
 /* 
-     template is JSX  
+	 template is JSX  
 
-     React Component 
-     jsx + data
+	 React Component 
+	 jsx + data
 
+*/
+import { toElement } from './../utils/toElement';
 
-     <section class="bg-zinc-50 border-l-4 shadow-sm p-4 my-5">
-        <h2 class="font-semibold">${todo}</h2>
-        <p class="text-sm text-gray-600">Category: ${todo.category}</p>
-        <p class="text-sm text-gray-600">Status: ${todo.status}</p>
-        <p class="text-sm text-gray-600">Start: ${todo.start}</p>
-        <p class="text-sm text-gray-600">Finish: ${todo.finish}</p>
-    </section>
+function toDoItemTemplate(todo) {
+	const template = `
+		<section class=" max-w-lg mx-auto my-3 p-2 bg-white shadow-lg rounded-2x1">
+			<h2 class="text-3xl font-bold text-center mt-14">${todo.todo}</h2>
 
-    < section class="max-w-lg mx-auto my-3 p-1 bg-white shadow-md rounded-2xl">
-				<h2 class="text-3xl font-bold text-center mt-14">${todo}</h2>
-
-				<div class="mx-auto flex flex-wrap justify-center gap-2 mt-6">
+			<div class="mx-auto flex flex-wrap justify-center gap-2 mt-6">
 					<button>
 						<svg
 							class="w-5 h-6 stroke-current fill-gray-600 stroke-0 hover:fill-rose-500"
@@ -41,7 +37,7 @@
 								d="M12 3c-4.963 0-9 4.038-9 9s4.037 9 9 9 9-4.038 9-9-4.037-9-9-9zm0 16c-3.859 0-7-3.14-7-7s3.141-7 7-7 7 3.14 7 7-3.141 7-7 7zM12.707 12l2.646-2.646c.194-.194.194-.512 0-.707-.195-.194-.513-.194-.707 0l-2.646 2.646-2.646-2.647c-.195-.194-.513-.194-.707 0-.195.195-.195.513 0 .707l2.646 2.647-2.646 2.646c-.195.195-.195.513 0 .707.097.098.225.147.353.147s.256-.049.354-.146l2.646-2.647 2.646 2.646c.098.098.226.147.354.147s.256-.049.354-.146c.194-.194.194-.512 0-.707l-2.647-2.647z"></path>
 						</svg>
 					</button>
-				</div>
+			</div>
 
 				<div class="m-5">
 					<p class="text-bold">Category: <span class="text-sm text-gray-600">${todo.category}</span></p>
@@ -49,22 +45,7 @@
 					<p class="text-bold">Start Date: <span class="text-sm text-gray-600">${todo.start}</span></p>
 					<p class="text-bold">Finish Date: <span class="text-sm text-gray-600">${todo.finish}</span></p>
 				</div>
-			</section>
-*/
-import { toElement } from './../utils/toElement';
-
-function toDoItemTemplate(todo) {
-	const template = `
-
-
-
-    <section class="bg-zinc-50 border-l-4 shadow-sm p-4 my-5">
-        <h2 class="font-semibold">${todo}</h2>
-        <p class="text-sm text-gray-600">Category: ${todo.category}</p>
-        <p class="text-sm text-gray-600">Status: ${todo.status}</p>
-        <p class="text-sm text-gray-600">Start: ${todo.start}</p>
-        <p class="text-sm text-gray-600">Finish: ${todo.finish}</p>
-    </section>
+		</section>
     `;
 
 	return toElement(template);

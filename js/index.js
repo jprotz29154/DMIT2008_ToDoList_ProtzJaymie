@@ -25,7 +25,7 @@ async function appInit() {
 	const appData = await getToDoData();
 	// Interactive Templating
 	const toDoItems = Object.values(appData).slice(0,10).map((obj) => {
-		return toDoItemTemplate(obj.todo);
+		return toDoItemTemplate(obj);
 	});
 
 	// render function jsx +++ data
@@ -40,7 +40,7 @@ async function appInit() {
 		div.appendChild(markup);
 	});
 
-	document.querySelector('main').append(div);
+	document.querySelector('#root').append(div);
 }
 
 appInit();
