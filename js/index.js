@@ -24,7 +24,7 @@ import { toDoItemTemplate } from './templates/toDoItem';
 async function appInit() {
 	const appData = await getToDoData();
 	// Interactive Templating
-	const toDoItems = Object.values(appData).map((obj) => {
+	const toDoItems = Object.values(appData).slice(0,10).map((obj) => {
 		return toDoItemTemplate(obj.todo);
 	});
 
@@ -40,7 +40,7 @@ async function appInit() {
 		div.appendChild(markup);
 	});
 
-	document.querySelector('main').append(markup);
+	document.querySelector('#root').append(div);
 }
 
 appInit();
